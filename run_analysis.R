@@ -17,6 +17,8 @@ goodFeatureIndex <- grep("-mean\\(\\)|-std\\(\\)", features[, 2])
 
 xCombined <- xCombined[, goodFeatureIndex]
 names(xCombined) <- features[goodFeatureIndex, 2]
+names(xCombined) <- gsub("\\(|\\)", "", names(xCombined))
+names(xCombined) <- tolower(names(xCombined))
 
 # 3. Uses descriptive activity names to name the activities in the data set
 activities <- read.table("activity_labels.txt")
